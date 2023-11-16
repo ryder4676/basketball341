@@ -48,14 +48,15 @@ POST https://render4676.onrender.com/players HTTP/1.1
 Content-Type: application/json
 
 {
-"nickName": "Mavericks",
-"cityName": "Dallas",
-"coach": "Jason Kidd",
-"homeArena": "American Airlines Center",
-"founded": 1980,
-"championships": 1,
-"conference": "Western",
-"division":"Southwest"
+  "name": "De'Aaron Sooox",
+  "position": "Guard",
+  "currentTeam": "Sacramento Kings",
+  "nationality": "USA",
+  "jerseyNumber": 99,
+  "height": { "feet": 7, "inches": 3 },
+  "weight": 185,
+  "birthdate": "1991/01/01",
+  "email": "deaaron.fox@example.com"
 }
 
 ### Update a existing player
@@ -63,14 +64,15 @@ PUT https://render4676.onrender.com/players/655583dbef086a21d032bc6b
 Content-Type: application/json
 
 {
-"nickName": "Mavericks",
-"cityName": "Dallas",
-"coach": "Jason Kidd",
-"homeArena": "American Airlines Center",
-"founded": 1980,
-"championships": 4,
-"conference": "Western",
-"division":"Southwest"
+  "name": "De'Aaron Sooox",
+  "position": "Guard",
+  "currentTeam": "Sacramento Kings",
+  "nationality": "USA",
+  "jerseyNumber": 99,
+  "height": { "feet": 7, "inches": 3 },
+  "weight": 185,
+  "birthdate": "1991/01/01",
+  "email": "deaaron.fox@example.com"
 }
 ### Delete a existing player
 DELETE https://render4676.onrender.com/players/655583dbef086a21d032bc6b

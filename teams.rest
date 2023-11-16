@@ -1,0 +1,17 @@
+###
+GET http://localhost:8080/teams
+
+###
+POST http://localhost:8080/teams
+Content-Type: application/json
+
+{
+"nickName": "Mavericks",
+"cityName": "Dallas",
+"coach": "Jason Kidd",
+"homeArena": "American Airlines Center",
+"founded": 1980,
+"championships": 1,
+"conference": "Western",
+"division":"Southwest"
+}

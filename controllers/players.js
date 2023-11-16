@@ -29,16 +29,19 @@ const getSingle = async (req, res) => {
 const createPlayer = async (req, res) => {
   try {
     const player = {
-      name: req.body.name,
-      position: req.body.position,
-      currentTeam:req.body.currentTeam,
-      nationality: req.body.nationality,
-      jerseyNumber: req.body.jerseyNumber,
-      height: req.body.height,
-      weight: req.body.weight,
-      birthdate: req.body.birthdate,
-      email: req.body.email
-    };
+        name: req.body.name,
+        position: req.body.position,
+        currentTeam:req.body.currentTeam,
+        jerseyNumber: req.body.jerseyNumber,
+        nationality: req.body.nationality,
+        height: {
+          feet: req.body.height.feet,
+          inches: req.body.height.inches,
+        },
+        weight: req.body.weight,
+        birthdate: req.body.birthdate,
+        email: req.body.email
+      };
 
     const newPlayer = await Player.create(player);
     res.status(201).json(newPlayer);
@@ -54,10 +57,14 @@ const updatePlayer = async (req, res) => {
     const playerId = req.params.id;
     const player = {
       name: req.body.name,
-      posistion: req.body.position,
+      position: req.body.position,
       currentTeam:req.body.currentTeam,
+      jerseyNumber: req.body.jerseyNumber,
       nationality: req.body.nationality,
-      height: req.body.height,
+      height: {
+        feet: req.body.height.feet,
+        inches: req.body.height.inches,
+      },
       weight: req.body.weight,
       birthdate: req.body.birthdate,
       email: req.body.email
@@ -77,15 +84,18 @@ const deletePlayer = async (req, res) => {
     const result = await Player.findByIdAndDelete(playerId);
 
     if (result) {
-      res.status(204).json({ message: 'Successfully deleted player' });
+      // No response body with a 204 status
+      res.status(204).json({ message: 'Successfully deleted player' }).end();
     } else {
-      res.status(404).json({ error: 'Successfully deleted player' });
+      res.status(404).json({ error: 'Player not found' });
     }
   } catch (error) {
-    console.error('Error deleting player:', error);
-    res.status(500).json({ error: 'Error deleting player' });
+    console.error('Error deleting player: Use an appropriate player Id', error);
+    res.status(500).json({ error: 'Error deleting player: Use an appropriate player Id' });
   }
 };
+
+
 
 // Export the functions to be used in your routes
 module.exports = {

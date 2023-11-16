@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "https://render4676.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
     "http"
@@ -114,6 +114,9 @@
                 "homeArena": {
                   "example": "any"
                 },
+                "coach": {
+                  "example": "any"
+                },
                 "founded": {
                   "example": "any"
                 },
@@ -192,10 +195,10 @@
                 "currentTeam": {
                   "example": "any"
                 },
-                "nationality": {
+                "jerseyNumber": {
                   "example": "any"
                 },
-                "jerseyNumber": {
+                "nationality": {
                   "example": "any"
                 },
                 "height": {
@@ -266,6 +269,9 @@
                   "example": "any"
                 },
                 "currentTeam": {
+                  "example": "any"
+                },
+                "jerseyNumber": {
                   "example": "any"
                 },
                 "nationality": {

@@ -55,6 +55,7 @@ const updateTeam = async (req, res) => {
       nickName: req.body.nickName,
       cityName: req.body.cityName,
       homeArena: req.body.homeArena,
+      coach: req.body.coach,
       founded: req.body.founded,
       championships: req.body.championships,
       conference: req.body.conference,

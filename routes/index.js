@@ -5,6 +5,7 @@
 const router = require("express").Router();
 // Use the "/teams" route defined in the "teams" module
 router.use("/teams", require("./teams"));
+// Use the "/teams" route defined in the "players" module
 router.use("/players", require("./players"));
 
 // Use the "/swagger" route defined in the "swagger" module

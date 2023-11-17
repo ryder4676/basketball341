@@ -12,7 +12,22 @@ const playerSchema = new mongoose.Schema({
     feet: { type: Number, required: true, min: 4 },
     inches: { type: Number, required: true, min: 0, max: 11 },
   },
-  weight: { type: Number, required: true, min: 100 },
+  weight: {
+    type: Number,
+    required: true,
+    validate: {
+      validator: function (value) {
+        // Check if the value is a number
+        if (typeof value !== 'number') {
+          throw new Error('Weight must be a number.');
+        }
+        // Check if the value is greater than or equal to 100
+        return value >= 100;
+      },
+      message: 'Invalid weight',
+    },
+  },
+  
   birthdate: {
     type: Date,
     required: true,

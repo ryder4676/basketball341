@@ -3,23 +3,30 @@ const mongoose = require('mongoose');
 
 // Define the schema for the Team model
 const teamSchema = new mongoose.Schema({
-  nickName: { type: String, required: true, maxLength: 30 },
-  cityName: { type: String, required: true, maxLength: 30 },
+  nickName: { type: String, required: true, maxLength: 25 },
+  cityName: { type: String, required: true, maxLength: 25 },
   homeArena: { type: String, required: true, maxLength: 30 },
   coach: {
     type: String,
     required: true,
     maxLength: 30,
-    // Custom validation for coach name using a regular expression
     validate: {
-      validator: (value) => /^[a-zA-Z]+$/.test(value),
-      message: 'Coach name must only contain letters.',
+      validator: (value) => isNaN(value),
+      message: 'Coach name must not be a number.',
     },
   },
-  founded: { type: Number, required: true, max: 9999 },
-  championships: { type: Number, required: true, max: 99},
-  conference: { type: String, required: true, maxLength: 30 },
-  division: { type: String, required: true, maxLength: 30 },
+  
+  founded: {
+    type: Number,
+    required: true,
+    validate: {
+      validator: (value) => /^\d{4}$/.test(value.toString()), // Check if it's a 4-digit number
+      message: 'Founded year must be a 4-digit number.',
+    },
+  },
+  championships:{type:Number, required: true},
+  conference: { type: String, required: true, maxLength: 15 },
+  division: { type: String, required: true, maxLength: 15 },
 });
 
 // Create the 'teams' model based on the defined schema

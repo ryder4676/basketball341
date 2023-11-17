@@ -13,7 +13,7 @@ Content-Type: application/json
   "founded": 1923,
   "championships": 1, 
   "conference": "Western",
-  "division": "Pacific Division"
+  "division": "Pacific"
 }
 
 

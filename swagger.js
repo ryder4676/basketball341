@@ -10,7 +10,7 @@ const doc = {
     title: 'My API',
     description: 'Description'
   },
-  host: 'https://render4676.onrender.com'
+  host: 'https://basketball4676.onrender.com'
 };
 
 // Specifying the output file for the generated Swagger documentation

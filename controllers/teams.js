@@ -52,7 +52,7 @@ const createTeam = async (req, res) => {
     // Create a new team in the database
     const newTeam = await Team.create(team);
     // Respond with a 201 Created status and the new team in the response body
-    res.status(201).json(newTeam);
+    res.status(204).json(newTeam);
   } catch (error) {
     // Handle errors by logging them and responding with a 500 Internal Server Error status
     console.error('Error creating team:', error);
@@ -79,14 +79,22 @@ const updateTeam = async (req, res) => {
 
     // Find and update the team in the database by ID
     const updatedTeam = await Team.findByIdAndUpdate(teamId, team, { new: true });
-    // Respond with a 200 OK status and the updated team in the response body
-    res.status(200).json(updatedTeam);
+
+    // Check if the team is found
+    if (updatedTeam) {
+      // Respond with a 204 OK status and the updated team in the response body
+      res.status(204).json(updatedTeam);
+    } else {
+      // If the team is not found, respond with a 404 Not Found status
+      res.status(404).json({ error: 'Team not Found' });
+    }
   } catch (error) {
     // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error updating team:', error);
-    res.status(500).json({ error: 'Error updating team' });
+    console.error('Error updating team: Make sure fields are filled in correctly', error);
+    res.status(500).json({ error: 'Error updating team: Make sure fields are filled in correctly' });
   }
 };
+
 
 // Define the 'deleteTeam' function, which deletes a team from the database by ID
 const deleteTeam = async (req, res) => {

@@ -7,7 +7,7 @@ const playerSchema = new mongoose.Schema({
   position: { type: String, required: true, maxLength: 30 },
   currentTeam: { type: String, required: true, maxLength: 30 },
   nationality: { type: String, required: true, maxLength: 30 },
-  jerseyNumber: { type: Number },
+  jerseyNumber: { type: Number, required: true },
   height: {
     feet: { type: Number, required: true, min: 4 },
     inches: { type: Number, required: true, min: 0, max: 11 },
@@ -15,17 +15,7 @@ const playerSchema = new mongoose.Schema({
   weight: {
     type: Number,
     required: true,
-    validate: {
-      validator: function (value) {
-        // Check if the value is a number
-        if (typeof value !== 'number') {
-          throw new Error('Weight must be a number.');
-        }
-        // Check if the value is greater than or equal to 100
-        return value >= 100;
-      },
-      message: 'Invalid weight',
-    },
+    min: 100
   },
   
   birthdate: {

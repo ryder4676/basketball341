@@ -32,7 +32,7 @@ const playerSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    maxLength: 30,
+    maxLength: 40,
     // Custom validation for email using a regular expression
     match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   },

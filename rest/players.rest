@@ -13,13 +13,13 @@ Content-Type: application/json
   "jerseyNumber": 5,
   "height": { "feet": 6, "inches": 3 },
   "weight": 185,
-  "birthdate": "1990-01-01",
+  "birthdate": "01/01/1990",
   "email": "deaaron.fox@example.com"
 }
 
 
 ###
-PUT http://localhost:8080/players/655697c1df751dfa7fb56013
+PUT http://localhost:8080/players/6557b34b013231e989a06006
 Content-Type: application/json
 
 {

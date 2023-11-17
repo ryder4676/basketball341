@@ -41,12 +41,12 @@ const createTeam = async (req, res) => {
     const team = {
       nickName: req.body.nickName,
       cityName: req.body.cityName,
-      homeArena: req.body.homeArena,
       coach: req.body.coach,
+      homeArena: req.body.homeArena,
       founded: req.body.founded,
       championships: req.body.championships,
       conference: req.body.conference,
-      division: req.body.division,
+      division: req.body.division
     };
 
     // Create a new team in the database
@@ -69,12 +69,12 @@ const updateTeam = async (req, res) => {
     const team = {
       nickName: req.body.nickName,
       cityName: req.body.cityName,
-      homeArena: req.body.homeArena,
       coach: req.body.coach,
+      homeArena: req.body.homeArena,
       founded: req.body.founded,
       championships: req.body.championships,
       conference: req.body.conference,
-      division: req.body.division,
+      division: req.body.division
     };
 
     // Find and update the team in the database by ID

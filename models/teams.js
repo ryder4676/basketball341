@@ -16,8 +16,8 @@ const teamSchema = new mongoose.Schema({
       message: 'Coach name must only contain letters.',
     },
   },
-  founded: { type: Number },
-  championships: { type: Number },
+  founded: { type: Number, required: true, maxLength: 4 },
+  championships: { type: Number, required: true, maxLength: 2},
   conference: { type: String, required: true, maxLength: 30 },
   division: { type: String, required: true, maxLength: 30 },
 });

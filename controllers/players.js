@@ -98,8 +98,8 @@ const updatePlayer = async (req, res) => {
     }
   } catch (error) {
     // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error updating player: Make sure you have all fields required', error);
-    res.status(500).json({ error: 'Error updating player: Make sure you have all fields required' });
+    console.error('Error updating player: Make sure you have all fields required and they are properly formatted', error);
+    res.status(500).json({ error: 'Error updating player: Make sure you have all fields required and they are properly formatted' });
   }
 };
 

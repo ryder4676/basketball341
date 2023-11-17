@@ -113,8 +113,8 @@ const deleteTeam = async (req, res) => {
     }
   } catch (error) {
     // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error deleting team: please enter avlaidly formatted team id', error);
-    res.status(500).json({ error: 'Error deleting team: please enter avlaidly formatted team id' });
+    console.error('Error deleting team: please enter valid team id', error);
+    res.status(500).json({ error: 'Error deleting team: please enter valid team id' });
   }
 };
 

@@ -75,4 +75,4 @@ Content-Type: application/json
   "email": "deaaron.fox@example.com"
 }
 ### Delete a existing player
-DELETE https://basketball4676.onrender.com/players/655583dbef086a21d032bc6b
+DELETE https://basketball4676.onrender.com/players/65563c40fe8ed34bcec7a52a

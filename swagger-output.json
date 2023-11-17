@@ -11,6 +11,16 @@
     "https"
   ],
   "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/teams/": {
       "get": {
         "description": "",
@@ -38,10 +48,10 @@
                 "cityName": {
                   "example": "any"
                 },
-                "homeArena": {
+                "coach": {
                   "example": "any"
                 },
-                "coach": {
+                "homeArena": {
                   "example": "any"
                 },
                 "founded": {
@@ -61,8 +71,8 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
+          "204": {
+            "description": "No Content"
           },
           "500": {
             "description": "Internal Server Error"
@@ -111,10 +121,10 @@
                 "cityName": {
                   "example": "any"
                 },
-                "homeArena": {
+                "coach": {
                   "example": "any"
                 },
-                "coach": {
+                "homeArena": {
                   "example": "any"
                 },
                 "founded": {
@@ -134,8 +144,11 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -218,8 +231,8 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
+          "204": {
+            "description": "No Content"
           },
           "500": {
             "description": "Internal Server Error"
@@ -294,8 +307,11 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"

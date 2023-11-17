@@ -1,19 +1,22 @@
+// Import the mongoose library
 const mongoose = require('mongoose');
 
+// Define the schema for the Player model
 const playerSchema = new mongoose.Schema({
-  name: {type:String, required: true, maxLength: 30},
-  position: {type:String, required: true, maxLength: 30},
-  currentTeam: {type:String, required: true, maxLength: 30},
-  nationality: {type:String, required: true, maxLength: 30},
-  jerseyNumber: {type:Number},
+  name: { type: String, required: true, maxLength: 30 },
+  position: { type: String, required: true, maxLength: 30 },
+  currentTeam: { type: String, required: true, maxLength: 30 },
+  nationality: { type: String, required: true, maxLength: 30 },
+  jerseyNumber: { type: Number },
   height: {
-        feet: { type: Number, required: true, min: 4 },
-        inches: { type: Number, required: true, min: 0, max: 11 },
-     },
+    feet: { type: Number, required: true, min: 4 },
+    inches: { type: Number, required: true, min: 0, max: 11 },
+  },
   weight: { type: Number, required: true, min: 100 },
   birthdate: {
     type: Date,
     required: true,
+    // Custom validation for birthdate
     validate: {
       validator: function (birthdate) {
         // Your custom validation logic here
@@ -26,9 +29,17 @@ const playerSchema = new mongoose.Schema({
       message: 'Invalid birthdate',
     },
   },
-  email: { type: String, required: true, maxLength: 30, match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
+  email: {
+    type: String,
+    required: true,
+    maxLength: 30,
+    // Custom validation for email using a regular expression
+    match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+  },
 });
 
-const team = mongoose.model('players', playerSchema);
+// Create the 'players' model based on the defined schema
+const Player = mongoose.model('players', playerSchema);
 
-module.exports = team;
+// Export the Player model to be used in other files
+module.exports = Player;

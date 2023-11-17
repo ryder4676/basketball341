@@ -1,64 +1,47 @@
+// Import the mongoose library
 const mongoose = require('mongoose');
 
 // Import the Player model (create a models/players.js file)
 const Player = require('../models/players');
 
-// Define the 'getAll' function, which fetches all teams from the 'players' collection
+// Define the 'getAll' function, which fetches all players from the 'players' collection
 const getAll = async (req, res) => {
   try {
-    const teams = await Player.find();
-    res.status(200).json(teams);
+    // Retrieve all players from the database
+    const players = await Player.find();
+    // Respond with a 200 OK status and the list of players in the response body
+    res.status(200).json(players);
   } catch (error) {
-    console.error('Error fetching teams:', error);
-    res.status(500).json({ error: 'Error fetching teams' });
+    // Handle errors by logging them and responding with a 500 Internal Server Error status
+    console.error('Error fetching players:', error);
+    res.status(500).json({ error: 'Error fetching players' });
   }
 };
 
 // Define the 'getSingle' function, which fetches a single player by its ID
 const getSingle = async (req, res) => {
   try {
+    // Extract the player ID from the request parameters
     const playerId = req.params.id;
+    // Find the player by ID in the database
     const player = await Player.findById(playerId);
+    // Respond with a 200 OK status and the player in the response body
     res.status(200).json(player);
   } catch (error) {
-    console.error('Error fetching team:', error);
-    res.status(500).json({ error: 'Error fetching team' });
+    // Handle errors by logging them and responding with a 500 Internal Server Error status
+    console.error('Error fetching player:', error);
+    res.status(500).json({ error: 'Error fetching player' });
   }
 };
 
+// Define the 'createPlayer' function, which creates a new player in the database
 const createPlayer = async (req, res) => {
   try {
-    const player = {
-        name: req.body.name,
-        position: req.body.position,
-        currentTeam:req.body.currentTeam,
-        jerseyNumber: req.body.jerseyNumber,
-        nationality: req.body.nationality,
-        height: {
-          feet: req.body.height.feet,
-          inches: req.body.height.inches,
-        },
-        weight: req.body.weight,
-        birthdate: req.body.birthdate,
-        email: req.body.email
-      };
-
-    const newPlayer = await Player.create(player);
-    res.status(201).json(newPlayer);
-  } catch (error) {
-    console.error('Error creating player:', error);
-    res.status(500).json({ error: 'Error creating player' });
-  }
-};
-
-const updatePlayer = async (req, res) => {
-  try {
-    
-    const playerId = req.params.id;
+    // Extract player details from the request body
     const player = {
       name: req.body.name,
       position: req.body.position,
-      currentTeam:req.body.currentTeam,
+      currentTeam: req.body.currentTeam,
       jerseyNumber: req.body.jerseyNumber,
       nationality: req.body.nationality,
       height: {
@@ -67,35 +50,73 @@ const updatePlayer = async (req, res) => {
       },
       weight: req.body.weight,
       birthdate: req.body.birthdate,
-      email: req.body.email
+      email: req.body.email,
     };
 
+    // Create a new player in the database
+    const newPlayer = await Player.create(player);
+    // Respond with a 201 Created status and the new player in the response body
+    res.status(201).json(newPlayer);
+  } catch (error) {
+    // Handle errors by logging them and responding with a 500 Internal Server Error status
+    console.error('Error creating player:', error);
+    res.status(500).json({ error: 'Error creating player' });
+  }
+};
+
+// Define the 'updatePlayer' function, which updates a player in the database by ID
+const updatePlayer = async (req, res) => {
+  try {
+    // Extract the player ID from the request parameters
+    const playerId = req.params.id;
+    // Extract updated player details from the request body
+    const player = {
+      name: req.body.name,
+      position: req.body.position,
+      currentTeam: req.body.currentTeam,
+      jerseyNumber: req.body.jerseyNumber,
+      nationality: req.body.nationality,
+      height: {
+        feet: req.body.height.feet,
+        inches: req.body.height.inches,
+      },
+      weight: req.body.weight,
+      birthdate: req.body.birthdate,
+      email: req.body.email,
+    };
+
+    // Find and update the player in the database by ID
     const updatedPlayer = await Player.findByIdAndUpdate(playerId, player, { new: true });
+    // Respond with a 200 OK status and the updated player in the response body
     res.status(200).json(updatedPlayer);
   } catch (error) {
+    // Handle errors by logging them and responding with a 500 Internal Server Error status
     console.error('Error updating player:', error);
     res.status(500).json({ error: 'Error updating player' });
   }
 };
 
+// Define the 'deletePlayer' function, which deletes a player from the database by ID
 const deletePlayer = async (req, res) => {
   try {
+    // Extract the player ID from the request parameters
     const playerId = req.params.id;
+    // Find and delete the player from the database by ID
     const result = await Player.findByIdAndDelete(playerId);
 
     if (result) {
-      // No response body with a 204 status
+      // Respond with a 204 No Content status and a custom success message in the response body
       res.status(204).json({ message: 'Successfully deleted player' }).end();
     } else {
+      // If the player is not found, respond with a 404 Not Found status
       res.status(404).json({ error: 'Player not found' });
     }
   } catch (error) {
-    console.error('Error deleting player: Use an appropriate player Id', error);
+    // Handle errors by logging them and responding with a 500 Internal Server Error status
+    console.error('Error deleting player:', error);
     res.status(500).json({ error: 'Error deleting player: Use an appropriate player Id' });
   }
 };
-
-
 
 // Export the functions to be used in your routes
 module.exports = {

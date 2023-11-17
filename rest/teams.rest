@@ -18,7 +18,7 @@ Content-Type: application/json
 
 
 ###
-PUT http://localhost:8080/teams/6556567c25742618036939af
+PUT http://localhost:8080/teams/6556583b25742618036939b9
 Content-Type: application/json
 
 {
@@ -33,8 +33,8 @@ Content-Type: application/json
 }
 
 
-###
-DELETE http://localhost:8080/teams/6556567c25742618036939af
+### DELETE a existing team with the team _id
+DELETE http://localhost:8080/teams/6556575e25742618036939b5
 
 
 
@@ -70,5 +70,5 @@ Content-Type: application/json
 "conference": "Western",
 "division":"Southwest"
 }
-### Delete a existing team
+### DELETE a existing team with the team _id
 DELETE https://render4676.onrender.com/teams/655583dbef086a21d032bc6b

@@ -12,12 +12,7 @@ const playerSchema = new mongoose.Schema({
     feet: { type: Number, required: true, min: 4 },
     inches: { type: Number, required: true, min: 0, max: 11 },
   },
-  weight: {
-    type: Number,
-    required: true,
-    min: 100
-  },
-  
+  weight: { type: Number, required: true, min: 100 },
   birthdate: {
     type: Date,
     required: true,

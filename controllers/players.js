@@ -121,7 +121,7 @@ const deletePlayer = async (req, res) => {
     }
   } catch (error) {
     // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error deleting player:', error);
+    console.error('Error deleting player: Use an appropriate player Id', error);
     res.status(500).json({ error: 'Error deleting player: Use an appropriate player Id' });
   }
 };

@@ -18,14 +18,14 @@ Content-Type: application/json
 
 
 ###
-PUT http://localhost:8080/teams/6556583b25742618036939b9
+PUT http://localhost:8080/teams/6557daa664a08cc8d28c239f
 Content-Type: application/json
 
 {
   "nickName": "Nuggets",
   "cityName": "Denver",
-  "coach": "Michael Malone",
-  "homeArena": "Ball Arena",
+  "coach": "Michael Malone 6557daa664a08cc8d28 adadadsa c239f cakjbfjchbcacacs",
+  "homeArena": "Ball Arena sdakjshkhjda dajkhkjdads jahkjhd a kjadhjdhkh akjakja",
   "founded": 1967,
   "championships": 1, 
   "conference": "Western",
@@ -59,14 +59,14 @@ Content-Type: application/json
 
 
 ### Update a existing team
-PUT https://basketball4676.onrender.com/teams/655583dbef086a21d032bc6b
+PUT https://basketball4676.onrender.com/teams/6557daa664a08cc8d28c239f
 Content-Type: application/json
 
 {
 "nickName": "Mavericks",
 "cityName": "Dallas",
 "coach": "Jason Kidd",
-"homeArena": "American Airlines Center",
+"homeArena": "American Airlines Center nba hkjhs sndnjkf dbdjjjjbgd  dkakhdkjh",
 "founded": 1980,
 "championships": 4,
 "conference": "Western",

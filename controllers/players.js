@@ -59,8 +59,8 @@ const createPlayer = async (req, res) => {
     res.status(204).json(newPlayer);
   } catch (error) {
     // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error updating player: Make sure you have all fields required', error);
-    res.status(500).json({ error: 'Error updating player: Make sure you have all fields required' });
+    console.error('Error creating player: Make sure you have filled all the required fields', error);
+    res.status(500).json({ error: 'Error creating player: Make sure you have filled all the required fields' });
   }
 };
 
@@ -86,23 +86,15 @@ const updatePlayer = async (req, res) => {
     };
 
     // Find and update the player in the database by ID
-    const updatedPlayer = await Player.findByIdAndUpdate(playerId, player, { new: true });
-
-    // Check if the player is found and updated
-    if (!updatedPlayer) {
-      // If the player is not found, respond with a 404 Not Found status
-      res.status(404).json({ error: 'Player not found' });
-    } else {
-      // Respond with a 204 OK status and the updated player in the response body
-      res.status(204).json(updatedPlayer);
-    }
+    const updatedPlayer = await Player.findByIdAndUpdate(playerId, player, { new: true, runValidators: true });
+    // Respond with a 200 OK status and the updated player in the response body
+    res.status(204).json(updatedPlayer);
   } catch (error) {
     // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error updating player: Make sure you have all fields required and they are properly formatted', error);
-    res.status(500).json({ error: 'Error updating player: Make sure you have all fields required and they are properly formatted' });
+    console.error('Error updating player: Make sure you have all fields required', error);
+    res.status(500).json({ error: 'Error updating player: Make sure you have all fields required' });
   }
 };
-
 
 // Define the 'deletePlayer' function, which deletes a player from the database by ID
 const deletePlayer = async (req, res) => {

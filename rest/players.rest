@@ -18,17 +18,17 @@ Content-Type: application/json
 }
 
 
-###
-PUT http://localhost:8080/players/6557b34b013231e989a06006
+### UPDATE a player by playerId
+PUT http://localhost:8080/players/6557df9364a08cc8d28c23a9
 Content-Type: application/json
 
 {
   "name": "De'Aaron Sooox",
   "position": "Guard",
-  "currentTeam": "Sacramento Kings",
+  "currentTeam": "Sacramento",
   "nationality": "USA",
-  "jerseyNumber": 99,
-  "height": { "feet": 7, "inches": 3 },
+  "jerseyNumber": "99",
+  "height": { "feet": 7, "inches": 11 },
   "weight": 185,
   "birthdate": "1991/01/01",
   "email": "deaaron.fox@example.com"

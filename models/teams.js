@@ -15,7 +15,6 @@ const teamSchema = new mongoose.Schema({
       message: 'Coach name must not be a number.',
     },
   },
-  
   founded: {
     type: Number,
     required: true,

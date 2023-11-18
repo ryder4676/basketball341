@@ -63,9 +63,7 @@ const createTeam = async (req, res) => {
 // Define the 'updateTeam' function, which updates a team in the database by ID
 const updateTeam = async (req, res) => {
   try {
-    // Extract the team ID from the request parameters
     const teamId = req.params.id;
-    // Extract updated team details from the request body
     const team = {
       nickName: req.body.nickName,
       cityName: req.body.cityName,
@@ -77,21 +75,24 @@ const updateTeam = async (req, res) => {
       division: req.body.division
     };
 
-    // Find and update the team in the database by ID
-    const updatedTeam = await Team.findByIdAndUpdate(teamId, team, { new: true });
+    const updatedTeam = await Team.findByIdAndUpdate(teamId, team, {
+      new: true,
+      runValidators: true
+    });
 
-    // Check if the team is found
     if (updatedTeam) {
-      // Respond with a 204 OK status and the updated team in the response body
       res.status(204).json(updatedTeam);
     } else {
-      // If the team is not found, respond with a 404 Not Found status
       res.status(404).json({ error: 'Team not Found' });
     }
   } catch (error) {
-    // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error updating team: Make sure fields are filled in correctly', error);
-    res.status(500).json({ error: 'Error updating team: Make sure fields are filled in correctly' });
+    if (error.name === 'ValidationError') {
+      const errors = Object.values(error.errors).map((err) => err.message);
+      return res.status(400).json({ error: errors });
+    }
+
+    console.error('Error updating team:', error);
+    res.status(500).json({ error: 'Error updating team' });
   }
 };
 

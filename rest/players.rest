@@ -40,7 +40,7 @@ DELETE http://localhost:8080/players/655697c1df751dfa7fb56013
 
 
 
-### GET ALL players
+### RENDER GET ALL players
 GET https://basketball4676.onrender.com/players
 
 ### Create New player
@@ -48,15 +48,15 @@ POST https://basketball4676.onrender.com/players HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "De'Aaron Sooox",
-  "position": "Guard",
-  "currentTeam": "Sacramento Kings",
-  "nationality": "USA",
-  "jerseyNumber": 99,
-  "height": { "feet": 7, "inches": 3 },
-  "weight": 185,
-  "birthdate": "1991/01/01",
-  "email": "deaaron.fox@example.com"
+    "name": "Drunk Leonard",
+    "position": "Forward",
+    "currentTeam": "Los Angeles Fr",
+    "jerseyNumber": 26,
+    "nationality": "USA",
+    "height": { "feet": 6, "inches": 7 },
+    "weight": 225,
+    "birthdate": "06/29/1991",
+    "email": "Drunk.leonard@example.com"
 }
 
 ### Update a existing player

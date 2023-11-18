@@ -5,7 +5,17 @@ const playerSchema = new mongoose.Schema({
   position: { type: String, required: true, maxLength: 25 },
   currentTeam:  { type: String, required: true, maxLength: 25 },
   nationality: { type: String, required: true, maxLength: 25 },
-  jesreyNumber: { type: Number, required: true },
+  jerseyNumber: {
+    type: Number,
+    required: true,
+    validate: {
+      validator: function (value) {
+        // Your custom validation logic for jerseyNumber
+        return value >= 0 && Number.isInteger(value); // Only allow non-negative integers
+      },
+      message: 'Invalid jersey number',
+    },
+  },
   height: {
         feet: { type: Number, required: true, min: 4 },
         inches: { type: Number, required: true, min: 0, max: 11 },

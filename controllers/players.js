@@ -58,9 +58,11 @@ const createPlayer = async (req, res) => {
     // Respond with a 204 Created status and the new player in the response body
     res.status(204).json(newPlayer);
   } catch (error) {
-    // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error creating player: Make sure you have filled all the required fields', error);
-    res.status(500).json({ error: 'Error creating player: Make sure you have filled all the required fields' });
+    // Log the detailed error information
+    console.error('Error creating player:', error);
+
+    // Respond with a 500 Internal Server Error status and a more specific error message
+    res.status(500).json({ error: 'Error creating player. Check the server logs for more details.' });
   }
 };
 

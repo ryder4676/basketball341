@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 const playerSchema = new mongoose.Schema({
   name: { type: String, required: true, maxLength: 30 },
-  position: { type: String, required: true, maxLength: 20 },
-  currentTeam:  { type: String, required: true, maxLength: 20 },
-  nationality: { type: String, required: true, maxLength: 20 },
+  position: { type: String, required: true, maxLength: 25 },
+  currentTeam:  { type: String, required: true, maxLength: 25 },
+  nationality: { type: String, required: true, maxLength: 25 },
   jesreyNumber: { type: Number, required: true },
   height: {
         feet: { type: Number, required: true, min: 4 },

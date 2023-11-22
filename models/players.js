@@ -28,7 +28,7 @@ const playerSchema = new mongoose.Schema({
         // You can add additional validation for a valid date here
         return !isNaN(Date.parse(value));
       },
-      message: 'Invalid birthdate format. Use YYYY-.',
+      message: 'Invalid birthdate format. Use MM/DD/YYYY',
     },
   },
   

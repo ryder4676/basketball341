@@ -4,6 +4,7 @@
 // Import the necessary modules
 const router = require("express").Router();
 const teamController = require("../controllers/teams");
+const {isAuthenticated} = require("../middleware/authenticate");
 
 // Define routes and link them to controller functions
 // This route responds to GET requests on the root path and invokes the 'getAll' function from the 'contactsController'
@@ -13,11 +14,11 @@ router.get("/", teamController.getAll);
 router.get("/:id", teamController.getSingle);
 
 // This route responds to POST requests to create a new contact
-router.post("/", teamController.createTeam);
+router.post("/", isAuthenticated, teamController.createTeam);
 
-router.put("/:id", teamController.updateTeam)
+router.put("/:id", isAuthenticated, teamController.updateTeam)
 
-router.delete("/:id", teamController.deleteTeam)
+router.delete("/:id", isAuthenticated, teamController.deleteTeam)
 
 
 // Export the router to be used in other parts of your application

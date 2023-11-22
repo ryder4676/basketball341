@@ -27,9 +27,9 @@ app.use(BodyParser.urlencoded({ extended: true }), BodyParser.json())
 .use(passport.initialize())
 .use(passport.session())
 .use((req, res, next) => {
-  res.setHeader("Access-Controll-Allow-Origin", "*");
-  res.setHeader("Access-Controll-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization");
-  res.setHeader("Access-Controll-Allow-Methods", "POST, GET, PUT, PATCH, OPTIONS, DELETE");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, PATCH, OPTIONS, DELETE");
   next();
 })
 .use(cors({methods:["GET", "POST", "PUT", "DELETE", "UPDATE", "PATCH"]}))

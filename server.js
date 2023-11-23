@@ -84,7 +84,7 @@ app.get("/", (req, res) => {
   res.send(
     req.session.user !== undefined
       ? `Logged in as ${req.session.user.displayName}`
-      : "Successfully logged out",
+      : "Successfully logged out"
   );
 });
 

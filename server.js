@@ -36,15 +36,21 @@ app
 
   // Set up CORS headers
   .use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization",
-    );
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "POST, GET, PUT, PATCH, OPTIONS, DELETE",
-    );
+    res.setHeader({
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization",
+    });
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+    // res.setHeader(
+    //   "Access-Control-Allow-Headers",
+    //   "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization",
+    // );
+    // res.setHeader(
+    //   "Access-Control-Allow-Methods",
+    //   "POST, GET, PUT, PATCH, OPTIONS, DELETE",
+    // );
     next();
   })
 
@@ -84,7 +90,7 @@ app.get("/", (req, res) => {
   res.send(
     req.session.user !== undefined
       ? `Logged in as ${req.session.user.displayName}`
-      : "Successfully logged out"
+      : "Successfully logged out",
   );
 });
 

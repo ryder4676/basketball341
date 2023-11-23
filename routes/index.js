@@ -7,10 +7,9 @@ const router = require("express").Router();
 const passport = require("passport");
 
 router.get("/", (req, res) => {
-  // res.send();
-  res.send(
-    "This is My default Directory: go to '/api-docs' to get started with swagger UI",
-  );
+  res.send();
+  // res.send(
+  //   "This is My default Directory: go to '/api-docs' to get started with swagger UI",);
 });
 
 // Use the "/teams" route defined in the "teams" module

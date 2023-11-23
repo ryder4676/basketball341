@@ -7,7 +7,7 @@
   },
   "host": "basketball4676.onrender.com",
   "basePath": "/",
-  "schemes": ["http", "https"],
+  "schemes": ["https"],
   "paths": {
     "/": {
       "get": {

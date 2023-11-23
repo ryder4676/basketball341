@@ -5,20 +5,12 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "https://basketball4676.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": [
+    "http", "https"
+  ],
   "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/login": {
       "get": {
         "description": "",
@@ -41,6 +33,9 @@
     },
     "/teams/": {
       "get": {
+        "tags": [
+          "teams"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -52,6 +47,9 @@
         }
       },
       "post": {
+        "tags": [
+          "teams"
+        ],
         "description": "",
         "parameters": [
           {
@@ -103,6 +101,9 @@
     },
     "/teams/{id}": {
       "get": {
+        "tags": [
+          "teams"
+        ],
         "description": "",
         "parameters": [
           {
@@ -122,6 +123,9 @@
         }
       },
       "put": {
+        "tags": [
+          "teams"
+        ],
         "description": "",
         "parameters": [
           {
@@ -183,6 +187,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "teams"
+        ],
         "description": "",
         "parameters": [
           {
@@ -210,6 +217,9 @@
     },
     "/players/": {
       "get": {
+        "tags": [
+          "players"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -221,6 +231,9 @@
         }
       },
       "post": {
+        "tags": [
+          "players"
+        ],
         "description": "",
         "parameters": [
           {
@@ -275,6 +288,9 @@
     },
     "/players/{id}": {
       "get": {
+        "tags": [
+          "players"
+        ],
         "description": "",
         "parameters": [
           {
@@ -294,6 +310,9 @@
         }
       },
       "put": {
+        "tags": [
+          "players"
+        ],
         "description": "",
         "parameters": [
           {
@@ -352,6 +371,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "players"
+        ],
         "description": "",
         "parameters": [
           {

@@ -6,6 +6,7 @@ const Team = require("../models/teams");
 
 // Define the 'getAll' function, which fetches all teams from the 'teams' collection
 const getAll = async (req, res) => {
+  //#swagger.tags=["teams"]
   try {
     // Retrieve all teams from the database
     const teams = await Team.find();
@@ -20,6 +21,7 @@ const getAll = async (req, res) => {
 
 // Define the 'getSingle' function, which fetches a single team by its ID
 const getSingle = async (req, res) => {
+  //#swagger.tags=["teams"]
   try {
     // Extract the team ID from the request parameters
     const teamId = req.params.id;
@@ -36,6 +38,7 @@ const getSingle = async (req, res) => {
 
 // Define the 'createTeam' function, which creates a new team in the database
 const createTeam = async (req, res) => {
+  //#swagger.tags=["teams"]
   try {
     // Extract team details from the request body
     const team = {
@@ -62,6 +65,7 @@ const createTeam = async (req, res) => {
 
 // Define the 'updateTeam' function, which updates a team in the database by ID
 const updateTeam = async (req, res) => {
+  //#swagger.tags=["teams"]
   try {
     const teamId = req.params.id;
     const team = {
@@ -98,6 +102,7 @@ const updateTeam = async (req, res) => {
 
 // Define the 'deleteTeam' function, which deletes a team from the database by ID
 const deleteTeam = async (req, res) => {
+  //#swagger.tags=["teams"]
   try {
     // Extract the team ID from the request parameters
     const teamId = req.params.id;

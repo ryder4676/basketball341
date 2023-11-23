@@ -6,6 +6,7 @@ const Player = require("../models/players");
 
 // Define the 'getAll' function, which fetches all players from the 'players' collection
 const getAll = async (req, res) => {
+  //#swagger.tags=["players"]
   try {
     // Retrieve all players from the database
     const players = await Player.find();
@@ -20,6 +21,7 @@ const getAll = async (req, res) => {
 
 // Define the 'getSingle' function, which fetches a single player by its ID
 const getSingle = async (req, res) => {
+  //#swagger.tags=["players"]
   try {
     // Extract the player ID from the request parameters
     const playerId = req.params.id;
@@ -36,6 +38,7 @@ const getSingle = async (req, res) => {
 
 // Define the 'createPlayer' function, which creates a new player in the database
 const createPlayer = async (req, res) => {
+  //#swagger.tags=["players"]
   try {
     // Extract player details from the request body
     const player = {
@@ -72,6 +75,7 @@ const createPlayer = async (req, res) => {
 
 // Define the 'updatePlayer' function, which updates a player in the database by ID
 const updatePlayer = async (req, res) => {
+  //#swagger.tags=["players"]
   try {
     // Extract the player ID from the request parameters
     const playerId = req.params.id;
@@ -114,6 +118,7 @@ const updatePlayer = async (req, res) => {
 
 // Define the 'deletePlayer' function, which deletes a player from the database by ID
 const deletePlayer = async (req, res) => {
+  //#swagger.tags=["players"]
   try {
     // Extract the player ID from the request parameters
     const playerId = req.params.id;

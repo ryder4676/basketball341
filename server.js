@@ -13,13 +13,15 @@ const cors = require("cors");
 // Create an instance of the express application
 const app = express();
 
-// Define  the port number, using process.env.PORT if available or 8080 as a default
+// Define the port number, using process.env.PORT if available or 8080 as a default
 const port = process.env.PORT || 8080;
 
 // Use 'body-parser' middleware to parse URL-encoded request bodies with extended options.
 // Additionally, use the 'body-parser' module to handle JSON request bodies.
 app
   .use(BodyParser.urlencoded({ extended: true }), BodyParser.json())
+
+  // Configure session middleware
   .use(
     session({
       secret: "secret",
@@ -27,8 +29,12 @@ app
       saveUninitialized: true,
     }),
   )
+
+  // Initialize Passport and use Passport session
   .use(passport.initialize())
   .use(passport.session())
+
+  // Set up CORS headers
   .use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
@@ -41,12 +47,15 @@ app
     );
     next();
   })
+
+  // Enable CORS for specified methods and origin
   .use(cors({ methods: ["GET", "POST", "PUT", "DELETE", "UPDATE", "PATCH"] }))
   .use(cors({ origin: "*" }))
 
-  // USe the routes defined in "./routes for the root path
+  // Use the routes defined in "./routes for the root path
   .use("/", require("./routes"));
 
+// Configure GitHub authentication strategy for Passport
 passport.use(
   new gitHubStrategy(
     {
@@ -62,6 +71,7 @@ passport.use(
   ),
 );
 
+// Serialize and deserialize user for Passport session
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -69,6 +79,7 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
+// Define a route for the root path
 app.get("/", (req, res) => {
   res.send(
     req.session.user !== undefined
@@ -76,6 +87,8 @@ app.get("/", (req, res) => {
       : "Successfully logged out",
   );
 });
+
+// Define a route for GitHub authentication callback
 app.get(
   "/github/callback",
   passport.authenticate("github", {
@@ -91,6 +104,7 @@ app.get(
 // Connect to the MongoDB database using Mongoose
 connectToDatabase();
 
+// Start the server and listen on the defined port
 app.listen(port, () => {
   console.log(`Server is running on Port: ${port}`);
 });

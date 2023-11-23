@@ -28,13 +28,13 @@ app.use(BodyParser.urlencoded({ extended: true }), BodyParser.json())
 .use(passport.session())
 .use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "https://basketball4676.onrender.com");
-  next();
   res.setHeader("Access-Control-Allow-Credentials", "true");
-
   res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization");
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, PATCH, OPTIONS, DELETE");
-  next();
+  
+  next(); // Move this line to the end of your middleware function
 })
+
 .use(cors({methods:["GET", "POST", "PUT", "DELETE", "UPDATE", "PATCH"]}))
 .use(cors({origin: "*"}))
 // USe the routes defined in "./routes for the root path

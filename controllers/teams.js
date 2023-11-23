@@ -1,8 +1,8 @@
 // Import the mongoose library
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Import the Teams model (create a models/teams.js file)
-const Team = require('../models/teams');
+const Team = require("../models/teams");
 
 // Define the 'getAll' function, which fetches all teams from the 'teams' collection
 const getAll = async (req, res) => {
@@ -13,8 +13,8 @@ const getAll = async (req, res) => {
     res.status(200).json(teams);
   } catch (error) {
     // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error fetching teams:', error);
-    res.status(500).json({ error: 'Error fetching teams' });
+    console.error("Error fetching teams:", error);
+    res.status(500).json({ error: "Error fetching teams" });
   }
 };
 
@@ -29,8 +29,8 @@ const getSingle = async (req, res) => {
     res.status(200).json(team);
   } catch (error) {
     // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error fetching team:', error);
-    res.status(500).json({ error: 'Error fetching team' });
+    console.error("Error fetching team:", error);
+    res.status(500).json({ error: "Error fetching team" });
   }
 };
 
@@ -46,7 +46,7 @@ const createTeam = async (req, res) => {
       founded: req.body.founded,
       championships: req.body.championships,
       conference: req.body.conference,
-      division: req.body.division
+      division: req.body.division,
     };
 
     // Create a new team in the database
@@ -55,8 +55,8 @@ const createTeam = async (req, res) => {
     res.status(204).json(newTeam);
   } catch (error) {
     // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error creating team:', error);
-    res.status(500).json({ error: 'Error creating team' });
+    console.error("Error creating team:", error);
+    res.status(500).json({ error: "Error creating team" });
   }
 };
 
@@ -72,30 +72,29 @@ const updateTeam = async (req, res) => {
       founded: req.body.founded,
       championships: req.body.championships,
       conference: req.body.conference,
-      division: req.body.division
+      division: req.body.division,
     };
 
     const updatedTeam = await Team.findByIdAndUpdate(teamId, team, {
       new: true,
-      runValidators: true
+      runValidators: true,
     });
 
     if (updatedTeam) {
       res.status(204).json(updatedTeam);
     } else {
-      res.status(404).json({ error: 'Team not Found' });
+      res.status(404).json({ error: "Team not Found" });
     }
   } catch (error) {
-    if (error.name === 'ValidationError') {
+    if (error.name === "ValidationError") {
       const errors = Object.values(error.errors).map((err) => err.message);
       return res.status(400).json({ error: errors });
     }
 
-    console.error('Error updating team:', error);
-    res.status(500).json({ error: 'Error updating team' });
+    console.error("Error updating team:", error);
+    res.status(500).json({ error: "Error updating team" });
   }
 };
-
 
 // Define the 'deleteTeam' function, which deletes a team from the database by ID
 const deleteTeam = async (req, res) => {
@@ -107,15 +106,17 @@ const deleteTeam = async (req, res) => {
 
     if (result) {
       // Respond with a 204 No Content status and a custom success message in the response body
-      res.status(204).json({ message: 'Successfully deleted team' });
+      res.status(204).json({ message: "Successfully deleted team" });
     } else {
       // If the team is not found, respond with a 404 Not Found status
-      res.status(404).json({ error: 'Team not Found' });
+      res.status(404).json({ error: "Team not Found" });
     }
   } catch (error) {
     // Handle errors by logging them and responding with a 500 Internal Server Error status
-    console.error('Error deleting team: please enter valid team id', error);
-    res.status(500).json({ error: 'Error deleting team: please enter valid team id' });
+    console.error("Error deleting team: please enter valid team id", error);
+    res
+      .status(500)
+      .json({ error: "Error deleting team: please enter valid team id" });
   }
 };
 
@@ -127,4 +128,3 @@ module.exports = {
   updateTeam,
   deleteTeam,
 };
-

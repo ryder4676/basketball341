@@ -18,14 +18,12 @@ const connectToDatabase = async () => {
     }
 
     // Connect to the MongoDB database using the provided URI
-    await mongoose.connect(process.env.MONGODB_URL, {
-     
-    });
+    await mongoose.connect(process.env.MONGODB_URL, {});
 
     // Store the database connection
     database = mongoose.connection;
     console.log("Database connected successfully!");
-    
+
     return database;
   } catch (error) {
     console.error("Error connecting to the database:", error);

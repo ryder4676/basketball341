@@ -9,8 +9,6 @@ const passport = require("passport");
 const session = require("express-session");
 const gitHubStrategy = require("passport-github2").Strategy;
 const cors = require("cors");
-const RedisStore = require("connect-redis")(session);
-
 
 // Create an instance of the express application
 const app = express();
@@ -24,7 +22,6 @@ app
   .use(BodyParser.urlencoded({ extended: true }), BodyParser.json())
   .use(
     session({
-      store: new RedisStore({ client: redisClient }),
       secret: "secret",
       resave: false,
       saveUninitialized: true,
@@ -46,7 +43,7 @@ app
   })
   .use(cors({ methods: ["GET", "POST", "PUT", "DELETE", "UPDATE", "PATCH"] }))
   .use(cors({ origin: "*" }))
-  .use(cors)
+
   // USe the routes defined in "./routes for the root path
   .use("/", require("./routes"));
 

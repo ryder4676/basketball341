@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "https://basketball4676.onrender.com",
+  "host": "basketball4676.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"

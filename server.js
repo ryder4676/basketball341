@@ -27,21 +27,21 @@ app.use(BodyParser.urlencoded({ extended: true }), BodyParser.json())
 .use(passport.initialize())
 .use(passport.session())
 .use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://basketball4676.onrender.com");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  
+  // res.setHeader("Access-Control-Allow-Credentials", "true");
+
   res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization");
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, PATCH, OPTIONS, DELETE");
-  
-  next(); // Move this line to the end of your middleware function
+  next();
 })
-
 // .use(cors({methods:["GET", "POST", "PUT", "DELETE", "UPDATE", "PATCH"]}))
 // .use(cors({origin: "*"}))
 // USe the routes defined in "./routes for the root path
 .use("/", require("./routes"));
 
 passport.use(new gitHubStrategy({
-  clientID: process.env.GIHUB_CLIENT_ID,
+  clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
   callbackURL: process.env.CALLBACK_URL
 },

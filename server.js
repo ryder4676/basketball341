@@ -16,6 +16,13 @@ const app = express();
 // Define  the port number, using process.env.PORT if available or 8080 as a default
 const port = process.env.PORT || 8080;
 
+const corsOptions = {
+  origin: "https://basketball4676.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE", "UPDATE", "PATCH"],
+  credentials: true, // Allow cookies, authentication headers
+  optionsSuccessStatus: 204, // For preflight requests
+};
+
 // Use 'body-parser' middleware to parse URL-encoded request bodies with extended options.
 // Additionally, use the 'body-parser' module to handle JSON request bodies.
 app.use(BodyParser.urlencoded({ extended: true }), BodyParser.json())
@@ -24,6 +31,9 @@ app.use(BodyParser.urlencoded({ extended: true }), BodyParser.json())
   resave: false,
   saveUninitialized: true,
 }))
+// .use(cors({methods:["GET", "POST", "PUT", "DELETE", "UPDATE", "PATCH"]}))
+.use(cors({origin: "*"}))
+.use(cors(corsOptions))
 .use(passport.initialize())
 .use(passport.session())
 .use((req, res, next) => {
@@ -35,8 +45,7 @@ app.use(BodyParser.urlencoded({ extended: true }), BodyParser.json())
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, PATCH, OPTIONS, DELETE");
   next();
 })
-.use(cors({methods:["GET", "POST", "PUT", "DELETE", "UPDATE", "PATCH"]}))
-.use(cors({origin: "*"}))
+
 // USe the routes defined in "./routes for the root path
 .use("/", require("./routes"));
 

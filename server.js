@@ -32,7 +32,7 @@ app.use(BodyParser.urlencoded({ extended: true }), BodyParser.json())
   saveUninitialized: true,
 }))
 // .use(cors({methods:["GET", "POST", "PUT", "DELETE", "UPDATE", "PATCH"]}))
-.use(cors({origin: "*"}))
+// .use(cors({origin: "*"}))
 .use(cors(corsOptions))
 .use(passport.initialize())
 .use(passport.session())

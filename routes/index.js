@@ -6,9 +6,9 @@ const router = require("express").Router();
 // Define a route that responds with "Hello World" for the root path
 const passport = require("passport");
 
-// router.get("/", (req, res) => {
-//     res.send("This is My default Directory: go to '/api-docs' to get started with swagger UI");
-// });
+router.get("/", (req, res) => {
+    res.send("This is My default Directory: go to '/api-docs' to get started with swagger UI");
+});
 
 // Use the "/teams" route defined in the "teams" module
 router.use("/teams", require("./teams"));

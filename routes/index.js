@@ -9,14 +9,12 @@ const passport = require("passport");
 // router.get("/", (req, res) => {
 //     res.send("This is My default Directory: go to '/api-docs' to get started with swagger UI");
 // });
-
+// Use the "/swagger" route defined in the "swagger" module
+router.use("/", require("./swagger"));
 // Use the "/teams" route defined in the "teams" module
 router.use("/teams", require("./teams"));
 // Use the "/teams" route defined in the "players" module
 router.use("/players", require("./players"));
-
-// Use the "/swagger" route defined in the "swagger" module
-router.use("/", require("./swagger"));
 
 router.get("/login", passport.authenticate("github"), (req,res)=>{});
 router.get("/logout", function(req, res, next){

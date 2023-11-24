@@ -35,8 +35,8 @@ app.use(BodyParser.urlencoded({ extended: true }), BodyParser.json())
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, PATCH, OPTIONS, DELETE");
   next();
 })
-// .use(cors({methods:["GET", "POST", "PUT", "DELETE", "UPDATE", "PATCH"]}))
-// .use(cors({origin: "*"}))
+.use(cors({methods:["GET", "POST", "PUT", "DELETE", "UPDATE", "PATCH"]}))
+.use(cors({origin: "*"}))
 // USe the routes defined in "./routes for the root path
 .use("/", require("./routes"));
 

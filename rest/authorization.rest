@@ -1,0 +1,7 @@
+###
+GET http://localhost:8080/login HTTP/1.1
+Strict-Transport-Security: max-age=3600;
+
+###
+GET http://localhost:8080/logout
+

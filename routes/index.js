@@ -6,7 +6,9 @@ const router = require("express").Router();
 // Define a route that responds with "Hello World" for the root path
 const passport = require("passport");
 
+
 // router.get("/", (req, res) => {
+//     //#swagger.tags=["This is My default Directory: go to '/api-docs' to get started with swagger UI"]
 //     res.send("This is My default Directory: go to '/api-docs' to get started with swagger UI");
 // });
 // Use the "/swagger" route defined in the "swagger" module
@@ -16,7 +18,8 @@ router.use("/teams", require("./teams"));
 // Use the "/teams" route defined in the "players" module
 router.use("/players", require("./players"));
 
-router.get("/login", passport.authenticate("github"), (req,res)=>{});
+
+router.get("/login", passport.authenticate("github"), (req, res)=>{});
 router.get("/logout", function(req, res, next){
     req.logout(function(err){
         if (err){return next(err);}

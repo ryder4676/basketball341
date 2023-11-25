@@ -7,10 +7,10 @@ const teamController = require("../controllers/teams");
 const { isAuthenticated } = require("../middleware/authenticate");
 
 // Define routes and link them to controller functions
-// This route responds to GET requests on the root path and invokes the 'getAll' function from the 'contactsController'
+// This route responds to GET requests on the root path and invokes the 'getAll' function from the 'teamController'
 router.get("/", teamController.getAll);
 
-// This route responds to GET requests with an 'id' parameter and invokes the 'getSingle' function from the 'contactsController'
+// This route responds to GET requests with an 'id' parameter and invokes the 'getSingle' function from the 'teamController'
 router.get("/:id", teamController.getSingle);
 
 // This route responds to POST requests to create a new contact

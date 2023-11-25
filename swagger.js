@@ -7,10 +7,11 @@ const swaggerAutogen = require('swagger-autogen')();
 // Defining the basic structure of the Swagger documentation
 const doc = {
   info: {
-    title: 'My API',
+    title: 'My Basketball API',
     description: 'Description'
   },
-  host: 'https://basketball4676.onrender.com'
+  host: "basketball4676.onrender.com",
+  schemes:["https"]
 };
 
 // Specifying the output file for the generated Swagger documentation
